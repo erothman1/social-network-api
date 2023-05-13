@@ -4,26 +4,32 @@ const reactionSchema = new Schema(
     {
         reactionId: {
             type: Schema.Types.ObjectId,
-            default: new ObjectId(),
+            default: () => new Types.ObjectId(),
         },
         reactionBody: {
-            type: String, 
-            required: true, 
+            type: String,
+            required: true,
             maxlength: 280,
         },
         username: {
-            type: String, 
+            type: String,
             required: true,
         },
         createdAt: {
-            type: Date, 
-            default: Date.now, 
+            type: Date,
+            default: Date.now,
             //use getter method to format timestamp on query
             get: (date) => {
                 return new Date(date).toLocaleDateString
             },
         }
     },
+    {
+        toJSON: {
+            getters: true,
+        },
+        id: false,
+    }
 )
 
 module.exports = reactionSchema
