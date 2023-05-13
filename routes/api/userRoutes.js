@@ -18,6 +18,9 @@ router.route("/:userId")
     .put(updateUser)
     .delete(deleteUser)
 
+//TODO: these routes aren't working
 router.route("/:userId/friends/friendId")
     .post(newFriend)
     .delete(deleteFriend)
+
+module.exports = router
