@@ -13,7 +13,7 @@ module.exports = {
     //get single user by its userId
     async getSingleUser(req, res) {
         try {
-            const response = await User.findOne({ _id: req.params.userId })
+            const response = await User.findOne({ _id: req.body.userId })
                 .select("-__v")
                 .populate("thoughts", "friends")
 
@@ -36,7 +36,7 @@ module.exports = {
     async updateUser(req, res) {
         try {
             const response = await User.findOneAndUpdate(
-                { _id: req.params.userId },
+                { _id: req.body.userId },
                 { $set: req.body },
                 { runValidators: true, new: true }
             )
@@ -49,7 +49,7 @@ module.exports = {
     //delete a user and their associated thoughts
     async deleteUser(req, res) {
         try {
-            const userData = await User.findOneAndRemove({ _id: req.params.userId })
+            const userData = await User.findOneAndRemove({ _id: req.body.userId })
 
             if (!userData) {
                 return res.status(404).json({ message: "No user with that ID" }) 

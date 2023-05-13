@@ -17,6 +17,7 @@ router.route("/")
     .put(updateThought)
     .delete(deleteThought)
 
+//TODO: not working 
 router.route("/:thoughtId/reactions")
     .post(newThoughtReaction)
     .delete(deleteThoughtReaction)
