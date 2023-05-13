@@ -9,7 +9,7 @@ const userSchema = new Schema(
             trim: true,
         },
         email: {
-            type: String, 
+            type: String,
             unique: true,
             required: true,
             match: [/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/, "Please input a valid email"] //email address validation,
@@ -26,9 +26,15 @@ const userSchema = new Schema(
             {
                 type: Schema.Types.ObjectId,
                 ref: "user"
-            }
+            },
         ],
-    }
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
+    },
 )
 
 userSchema.virtual("friendCount").get(function () {
