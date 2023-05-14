@@ -15,6 +15,7 @@ const reactionSchema = new Schema(
             type: String,
             required: true,
         },
+        //TODO: not showing up 
         createdAt: {
             type: Date,
             default: Date.now,

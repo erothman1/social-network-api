@@ -58,7 +58,7 @@ module.exports = {
             }
 
             const thoughtData = await Thought.deleteMany(
-                { username: req.params.userId }
+                { username: req.body.userId }
             )
 
             !thoughtData 

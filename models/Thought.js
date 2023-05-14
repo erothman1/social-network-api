@@ -9,6 +9,7 @@ const thoughtSchema = new Schema(
             maxlength: 280,
             minlength: 1,
         },
+        //TODO: not showing up 
         createdAt: {
             type: Date,
             default: Date.now,
