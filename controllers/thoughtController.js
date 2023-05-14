@@ -13,7 +13,7 @@ module.exports = {
     //get single thought 
     async getSingleThought(req, res) {
         try {
-            const response = await Thought.findOne({ _id: req.body.thoughtId })
+            const response = await Thought.findOne({ _id: req.params.thoughtId })
                 .select("-__v")
 
             !response ? res.status(404).json({ message: 'No thought with that ID' }) : res.json(response)
