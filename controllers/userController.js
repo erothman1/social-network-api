@@ -14,9 +14,10 @@ module.exports = {
     //get single user by its userId
     async getSingleUser(req, res) {
         try {
-            const response = await User.findOne({ _id: req.body.userId })
+            const response = await User.findOne({ _id: req.params.userId })
                 .select("-__v")
-                .populate("thoughts", "friends")
+                .populate("thoughts")
+                .populate("friends")
 
             !response ? res.status(404).json({ message: 'No user with that ID' }) : res.json(response)
 
