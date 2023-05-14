@@ -9,13 +9,12 @@ const thoughtSchema = new Schema(
             maxlength: 280,
             minlength: 1,
         },
-        //TODO: not showing up 
         createdAt: {
             type: Date,
             default: Date.now,
             //Use a getter method to format the timestamp on query
             get: (date) => {
-                return new Date(date).toLocaleDateString
+                return new Date(date).toLocaleDateString()
             },
         },
         username: {

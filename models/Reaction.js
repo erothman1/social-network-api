@@ -15,13 +15,12 @@ const reactionSchema = new Schema(
             type: String,
             required: true,
         },
-        //TODO: not showing up 
         createdAt: {
             type: Date,
             default: Date.now,
             //use getter method to format timestamp on query
             get: (date) => {
-                return new Date(date).toLocaleDateString
+                return new Date(date).toLocaleDateString()
             },
         }
     },
